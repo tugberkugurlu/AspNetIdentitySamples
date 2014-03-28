@@ -24,7 +24,7 @@ namespace SimpleOAuthSample.Migrations
                     Id = "42ff5dad3c274c97a3a7c3d44b67bb42",
                     Name = "Demo Resource Owner Password Credentials Grant Client",
                     ClientSecretHash = new PasswordHasher().HashPassword("client123456"),
-                    AllowedGrant = AllowedGrant.ResourceOwnerGrant,
+                    AllowedGrant = OAuthGrant.ResourceOwner,
                     CreatedOn = DateTimeOffset.UtcNow
                 });
 

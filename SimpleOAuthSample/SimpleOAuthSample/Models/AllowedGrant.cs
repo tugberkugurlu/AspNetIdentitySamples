@@ -1,10 +1,10 @@
 ﻿
 namespace SimpleOAuthSample.Models
 {
-    public enum AllowedGrant
+    public enum OAuthGrant
     {
         CodeGrant = 1,
         ImplicitGrant = 2,
-        ResourceOwnerGrant = 3
+        ResourceOwner = 3
     }
 }
