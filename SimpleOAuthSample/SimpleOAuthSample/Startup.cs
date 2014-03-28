@@ -22,7 +22,7 @@ namespace SimpleOAuthSample
 
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("oauth/token"),
+                TokenEndpointPath = new PathString("/oauth/token"),
                 Provider = new MyOAuthAuthorizationServerProvider(),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
 #if DEBUG
