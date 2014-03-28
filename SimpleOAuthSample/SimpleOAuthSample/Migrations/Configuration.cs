@@ -34,6 +34,7 @@ namespace SimpleOAuthSample.Migrations
                 {
                     Id = Guid.NewGuid().ToString("N"),
                     PasswordHash = new PasswordHasher().HashPassword("user123456"),
+                    SecurityStamp = Guid.NewGuid().ToString(),
                     Email = "tugberk@example.com",
                     EmailConfirmed = true
                 });
