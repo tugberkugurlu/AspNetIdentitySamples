@@ -13,7 +13,7 @@ namespace SimpleOAuthSample.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201403281409238_init"; }
+            get { return "201403311141319_init"; }
         }
         
         string IMigrationMetadata.Source

@@ -136,12 +136,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201403281409238_init.cs" />
-    <Compile Include="Migrations\201403281409238_init.Designer.cs">
-      <DependentUpon>201403281409238_init.cs</DependentUpon>
+    <Compile Include="Migrations\201403311141319_init.cs" />
+    <Compile Include="Migrations\201403311141319_init.Designer.cs">
+      <DependentUpon>201403311141319_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AllowedGrant.cs" />
+    <Compile Include="Models\OAuthGrant.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\OAuthDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,10 +157,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201403281409238_init.resx">
-      <DependentUpon>201403281409238_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201403311141319_init.resx">
+      <DependentUpon>201403311141319_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

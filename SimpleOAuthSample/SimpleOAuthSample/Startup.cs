@@ -44,15 +44,18 @@ namespace SimpleOAuthSample
 
     public class MyOAuthAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
-        public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
+        public override async Task ValidateClientAuthentication(
+            OAuthValidateClientAuthenticationContext context)
         {
             string clientId;
             string clientSecret;
 
             if (context.TryGetBasicCredentials(out clientId, out clientSecret))
             {
-                UserManager<IdentityUser> userManager = context.OwinContext.GetUserManager<UserManager<IdentityUser>>();
-                OAuthDbContext dbContext = context.OwinContext.Get<OAuthDbContext>();
+                UserManager<IdentityUser> userManager = 
+                    context.OwinContext.GetUserManager<UserManager<IdentityUser>>();
+                OAuthDbContext dbContext = 
+                    context.OwinContext.Get<OAuthDbContext>();
 
                 try
                 {
@@ -85,18 +88,23 @@ namespace SimpleOAuthSample
             else
             {
                 // The client credentials could not be retrieved.
-                context.SetError("invalid_client", "Client credentials could not be retrieved through the Authorization header.");
+                context.SetError(
+                    "invalid_client", 
+                    "Client credentials could not be retrieved through the Authorization header.");
+
                 context.Rejected();
             }
         }
 
-        public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
+        public override async Task GrantResourceOwnerCredentials(
+            OAuthGrantResourceOwnerCredentialsContext context)
         {
             Client client = context.OwinContext.Get<Client>("oauth:client");
             if (client.AllowedGrant == OAuthGrant.ResourceOwner)
             {
                 // Client flow matches the requested flow. Continue...
-                UserManager<IdentityUser> userManager = context.OwinContext.GetUserManager<UserManager<IdentityUser>>();
+                UserManager<IdentityUser> userManager = 
+                    context.OwinContext.GetUserManager<UserManager<IdentityUser>>();
 
                 IdentityUser user;
                 try
@@ -118,7 +126,10 @@ namespace SimpleOAuthSample
                     try
                     {
                         // User is found. Signal this by calling context.Validated
-                        ClaimsIdentity identity = await userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
+                        ClaimsIdentity identity = await userManager.CreateIdentityAsync(
+                            user, 
+                            DefaultAuthenticationTypes.ExternalBearer);
+
                         context.Validated(identity);
                     }
                     catch
@@ -131,14 +142,20 @@ namespace SimpleOAuthSample
                 else
                 {
                     // The resource owner credentials are invalid or resource owner does not exist.
-                    context.SetError("access_denied", "The resource owner credentials are invalid or resource owner does not exist.");
+                    context.SetError(
+                        "access_denied", 
+                        "The resource owner credentials are invalid or resource owner does not exist.");
+
                     context.Rejected();
                 }
             }
             else
             {
                 // Client is not allowed for the 'Resource Owner Password Credentials Grant'.
-                context.SetError("invalid_grant", "Client is not allowed for the 'Resource Owner Password Credentials Grant'");
+                context.SetError(
+                    "invalid_grant", 
+                    "Client is not allowed for the 'Resource Owner Password Credentials Grant'");
+
                 context.Rejected();
             }
         }
